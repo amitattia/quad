@@ -12,7 +12,7 @@ def getDis(movement):
   if movement == 'test':
     print('Insert distance')
     lr = int(input('lr value: '))
-    fb = (input('fb value: '))
+    fb = int(input('fb value: '))
     return (lr, fb)
 
 if __name__ == "__main__":
