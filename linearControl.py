@@ -15,12 +15,18 @@ def getDis(movement):
     fb = int(input('fb value: '))
     return (lr, fb)
 
+lr_move(offset, movement):
+  return
+
+fb_move(offset, movement):
+  return
+
 if __name__ == "__main__":
   EPSILON = 10**0
   SLEEP = 0.5
   MOVEMENT = sys.argv[1]
   disVec = getDis(MOVEMENT)
-  while(sum(x**2 for x in disVec) < EPSILON):
+  while(sum(x**2 for x in disVec) > EPSILON):
     lr_move(disVec[0], MOVEMENT)
     fb_move(disVec[1], MOVEMENT)
     time.sleep(SLEEP)
