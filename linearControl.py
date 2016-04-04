@@ -6,7 +6,7 @@ if __name__ == "__main__":
   SLEEP = 0.5
   MOVEMENT = sys.argv[1]
   disVec = getDis(MOVEMENT)
-  while(sum(x**2 for x in disVec)) < EPSILON):
+  while(sum(x**2 for x in disVec) < EPSILON):
     lr_move(disVec[0], MOVEMENT)
     fb_move(disVec[1], MOVEMENT)
     time.sleep(SLEEP)
