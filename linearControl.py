@@ -11,8 +11,8 @@ def getDis(movement):
     return (0, 0)
   if movement == 'test':
     print('Insert distance')
-    lr = input('lr value: ')
-    fb = input('fb value: ')
+    lr = int(input('lr value: '))
+    fb = (input('fb value: '))
     return (lr, fb)
 
 if __name__ == "__main__":
