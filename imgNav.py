@@ -5,6 +5,9 @@ def getCenter(image):
 	return ndimage.measurements.center_of_mass(image)
 
 def imgVec(cam):
+    #Check if the color is indeed blue
+    lower_blue = np.array([8,120,120])
+    upper_blue = np.array([15,200,200])
     stream = picamera.Array.PiRGBArray(cam)
     camera.capture(stream, format='bgr')
     frame = stream.array
