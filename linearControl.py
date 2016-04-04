@@ -11,8 +11,8 @@ def getDis(movement):
     return (0, 0)
   if movement == 'test':
     print('Insert distance')
-    lr = double(input('lr value: '))
-    fb = double(input('fb value: '))
+    lr = float(input('lr value: '))
+    fb = float(input('fb value: '))
     return (lr, fb)
 
 def lr_move(offset, movement):
