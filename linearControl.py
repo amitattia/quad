@@ -2,6 +2,9 @@ import sys
 import time
 import picamera
 import imgNav
+import smbus
+bus = smbus.SMBus(1)
+address = 0x04
 
 def getDis(movement, cam=None):
     """Returns a tuple (x-lr,y-fb) distances."""
@@ -18,15 +21,19 @@ def getDis(movement, cam=None):
 
 def lr_move(offset, movement):
     if(offset > 0):
+        bus.write_block_data(address, 2, [0, 4, 100])
         print('l')
     else:
+        bus.write_block_data(address, 2, [0, 3, 100])
         print('r')
     return
 
 def fb_move(offset, movement):
     if(offset > 0):
+        bus.write_block_data(address, 2, [1, 4, 100])
         print('f')
     else:
+        bus.write_block_data(address, 2, [1, 3, 100])
         print('b')
     return
 
