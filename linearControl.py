@@ -1,16 +1,22 @@
 import sys
 import time
 import picamera
+import microstacknode.hardware.gps.l80gps
 import imgNav
 import smbus
 bus = smbus.SMBus(1)
 address = 0x04
+gps = microstacknode.hardware.gps.l80gps.L80GPS()
+
+def getCor(data):
+	cor = (data['latitude'], data['altitude'], data['longitude'])
+	return cor
 
 def getDis(movement, cam=None):
     """Returns a tuple (x-lr,y-fb) distances."""
     if movement == 'gps':
-        print('Empty')
-        return (0, 0)
+		dst = getCor(gps.get_gpgga())
+        return (dst[2], dst[0])
     if movement == 'img':
         return imgNav.imgVec(cam)
     if movement == 'test':
@@ -46,8 +52,10 @@ if __name__ == "__main__":
         camera = picamera.PiCamera()
     disVec = getDis(MOVEMENT, camera)
     while(sum(x**2 for x in disVec) > EPSILON):
-        lr_move(disVec[0], MOVEMENT)
-        fb_move(disVec[1], MOVEMENT)
+        if(disVec[0]**2 > EPSILON):
+            lr_move(disVec[0], MOVEMENT)
+        if(disVec[1]**2 > EPSILON):
+            fb_move(disVec[1], MOVEMENT)
         time.sleep(SLEEP)
         disVec = getDis(MOVEMENT)
     print('Got to location')
