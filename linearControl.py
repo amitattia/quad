@@ -15,10 +15,10 @@ def getDis(movement):
     fb = int(input('fb value: '))
     return (lr, fb)
 
-lr_move(offset, movement):
+def lr_move(offset, movement):
   return
 
-fb_move(offset, movement):
+def fb_move(offset, movement):
   return
 
 if __name__ == "__main__":
