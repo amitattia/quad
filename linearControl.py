@@ -18,10 +18,10 @@ def disVec(movement):
   if movement is 'gps':
     print('Empty')
     return (0, 0)
-  if movement is 'img'
+  if movement is 'img':
     print('Empty')
     return (0, 0)
-  if movement is 'test'
+  if movement is 'test':
     print('Insert distance')
     lr = input('lr value: ')
     fb = input('fb value: ')
