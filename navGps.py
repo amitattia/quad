@@ -50,7 +50,7 @@ if __name__ == '__main__':
 		dst = getCor(gps.get_gpgga())
 		print(dst)
 		tmp = input("Press enter..")
-	zero()
+	#zero()
 	while True:
 		try:
 			bus.write_block_data(address, 2, [0, 4, 0])
