@@ -11,10 +11,10 @@ def all():
     bus.write_block_data(address, 2, [3, 6, 148])
 
 def zero():
+    bus.write_block_data(address, 2, [0, 4, 0])
     bus.write_block_data(address, 2, [1, 4, 0])
-    #bus.write_block_data(address, 2, [0, 4, 0])
-    #bus.write_block_data(address, 2, [2, 4, 0])
-    #bus.write_block_data(address, 2, [3, 4, 0])
+    bus.write_block_data(address, 2, [2, 4, 0])
+    bus.write_block_data(address, 2, [3, 4, 0])
 
 def up():
     bus.write_block_data(address, 2, [2, 4, 200])
@@ -36,16 +36,8 @@ def right():
 
 def getCor(data):
 	cor = (data['latitude'], data['altitude'], data['longitude'])
-	#print(cor)
 	return cor
 
-#	while True:
-#	#	forwards()
-#		left()
-#		time.sleep(1)
-#	#	backwards()
-#		right()
-#		time.sleep(1)
 if __name__ == '__main__':
 	gps = microstacknode.hardware.gps.l80gps.L80GPS()
 	tmp = 'b'
@@ -61,7 +53,8 @@ if __name__ == '__main__':
 	zero()
 	while True:
 		try:
-			zero()
+			bus.write_block_data(address, 2, [0, 4, 0])
+            bus.write_block_data(address, 2, [1, 4, 0])
 			time.sleep(0.1)
 			loc = getCor(gps.get_gpgga())
 			zero()
