@@ -68,11 +68,11 @@ if __name__ == '__main__':
 				right()
 			time.sleep(1)
 		except KeyboardInterrupt:
-		    print('ctrl+c')
-	        bus.write_block_data(address, 2, [1, 4, 0])
+            print('ctrl+c')
+            bus.write_block_data(address, 2, [1, 4, 0])
             bus.write_block_data(address, 2, [0, 4, 0])
             bus.write_block_data(address, 2, [2, 4, 0])
-		    exit()
+            exit()
 		except:
 			print("io")
 			time.sleep(1)
