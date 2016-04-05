@@ -11,22 +11,22 @@ def all():
     bus.write_block_data(address, 2, [3, 6, 148])
 
 def zero():
-    bus.write_block_data(address, 2, [0, 4, 0])
     bus.write_block_data(address, 2, [1, 4, 0])
-    bus.write_block_data(address, 2, [2, 4, 0])
-    bus.write_block_data(address, 2, [3, 4, 0])
+    #bus.write_block_data(address, 2, [0, 4, 0])
+    #bus.write_block_data(address, 2, [2, 4, 0])
+    #bus.write_block_data(address, 2, [3, 4, 0])
 
 def up():
-    bus.write_block_data(address, 2, [2, 4, 100])
+    bus.write_block_data(address, 2, [2, 4, 200])
 
 def down():
-    bus.write_block_data(address, 2, [2, 3, 100])
+    bus.write_block_data(address, 2, [2, 3, 50])
 
 def forwards():
-    bus.write_block_data(address, 2, [1, 4, 100])
+    bus.write_block_data(address, 2, [1, 4, 20])
 
 def backwards():
-    bus.write_block_data(address, 2, [1, 3, 100])
+    bus.write_block_data(address, 2, [1, 3, 50])
 
 def left():
     bus.write_block_data(address, 2, [0, 4, 100])
@@ -61,17 +61,25 @@ if __name__ == '__main__':
 	zero()
 	while True:
 		try:
+			zero()
+			time.sleep(0.1)
 			loc = getCor(gps.get_gpgga())
 			zero()
-			if(dst[0]+e1<loc[0]):
+			if(dst[0]+e1>loc[0]):
 				forwards()
-			if(dst[0]>e1+loc[0]):
+			if(dst[0]<e1+loc[0]):
 				backwards()
-			if(dst[2]+e2<loc[2]):
+			if(dst[2]+e2>loc[2]):
 				left()
-			if(dst[2]>e2+loc[2]):
+			if(dst[2]<e2+loc[2]):
 				right()
 			time.sleep(1)
+		except KeyboardInterrupt:
+		    print('ctrl+c')
+	        bus.write_block_data(address, 2, [1, 4, 0])
+            bus.write_block_data(address, 2, [0, 4, 0])
+            bus.write_block_data(address, 2, [2, 4, 0])
+		    exit()
 		except:
 			print("io")
 			time.sleep(1)
