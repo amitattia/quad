@@ -46,34 +46,34 @@ if __name__ == '__main__':
 	e1 = 0.00005
 	e2 = 0.00005
 	while(tmp != 'a'):
-		time.sleep(1)
-		dst = getCor(gps.get_gpgga())
-		print(dst)
-		tmp = input("Press enter..")
+	    time.sleep(1)
+	    dst = getCor(gps.get_gpgga())
+	    print(dst)
+	    tmp = input("Press enter..")
 	#zero()
 	while True:
-		try:
-			bus.write_block_data(address, 2, [0, 4, 0])
-            bus.write_block_data(address, 2, [1, 4, 0])
-			time.sleep(0.1)
-			loc = getCor(gps.get_gpgga())
-			zero()
-			if(dst[0]+e1>loc[0]):
-				forwards()
-			if(dst[0]<e1+loc[0]):
-				backwards()
-			if(dst[2]+e2>loc[2]):
-				left()
-			if(dst[2]<e2+loc[2]):
-				right()
-			time.sleep(1)
-		except KeyboardInterrupt:
-            print('ctrl+c')
-            bus.write_block_data(address, 2, [1, 4, 0])
-            bus.write_block_data(address, 2, [0, 4, 0])
-            bus.write_block_data(address, 2, [2, 4, 0])
-            exit()
-		except:
-			print("io")
-			time.sleep(1)
+	    try:
+	    	bus.write_block_data(address, 2, [0, 4, 0])
+	    	bus.write_block_data(address, 2, [1, 4, 0])
+	    	time.sleep(0.1)
+	    	loc = getCor(gps.get_gpgga())
+	    	zero()
+	    	if(dst[0]+e1>loc[0]):
+	    	    forwards()
+	    	if(dst[0]<e1+loc[0]):
+	    	    backwards()
+	    	if(dst[2]+e2>loc[2]):
+	    	    left()
+	    	if(dst[2]<e2+loc[2]):
+	    	    right()
+	    	time.sleep(1)
+	    except KeyboardInterrupt:
+	        print('ctrl+c')
+	        bus.write_block_data(address, 2, [1, 4, 0])
+	        bus.write_block_data(address, 2, [0, 4, 0])
+	        bus.write_block_data(address, 2, [2, 4, 0])
+	        exit()
+	    except:
+	        print("io")
+	        time.sleep(1)
 
