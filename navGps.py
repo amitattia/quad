@@ -41,10 +41,10 @@ def getCor(data):
 if __name__ == '__main__':
 	gps = microstacknode.hardware.gps.l80gps.L80GPS()
 	tmp = 'b'
-	e1 = 0
-	e2 = 0
-	#e1 = 0.00000501
-	#e2 = 0.00000501
+	#e1 = 0
+	#e2 = 0
+	e1 = 0.00005
+	e2 = 0.00005
 	while(tmp != 'a'):
 		time.sleep(1)
 		dst = getCor(gps.get_gpgga())
