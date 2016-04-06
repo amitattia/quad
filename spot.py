@@ -55,7 +55,7 @@ def getCor(data):
     return cor
 
 if __name__ == '__main__':
-    gps = microstacknode.hardware.gps.l80gps.L80GPS()
+    #gps = microstacknode.hardware.gps.l80gps.L80GPS()
     #e1 = 0
     #e2 = 0
     e1 = 0.00007
@@ -69,8 +69,10 @@ if __name__ == '__main__':
             time.sleep(0.2)
             time.sleep(4)
             loc = getCor(gps.get_gpgga())
-            print(dst)
-            print(loc)
+            #print(dst)
+            #print(loc)
+            print('lat')
+            print(dst[0]-loc[0])
             if(abs(dst[0]-loc[0]) > e1):
                 if(dst[0] > loc[0]):
                     print('f')
@@ -78,14 +80,14 @@ if __name__ == '__main__':
                 else:
                     print('b')
                     backwards()
-            if(abs(dst[1]-loc[1]) > e2):
-                if(dst[2] > loc[2]):
-                    print('l')
-                    left()
-                else:
-                    print('r')
-                    right()
-            time.sleep(3)
+            #if(abs(dst[1]-loc[1]) > e2):
+            #    if(dst[2] > loc[2]):
+            #        print('l')
+            #        left()
+            #    else:
+            #        print('r')
+            #        right()
+            time.sleep(2)
         except KeyboardInterrupt:
             print('ctrl+c')
             zero()
