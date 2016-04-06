@@ -49,7 +49,7 @@ def left():
     time.sleep(0.2)
 
 def getCor(data):
-    if cor[1] == '':
+    if data['altitude'] == '':
         return (data['latitude'], 0, data['longitude'])
     cor = (data['latitude'], float(data['altitude']), data['longitude'])
     return cor
