@@ -1,9 +1,17 @@
 import time
 import microstacknode.hardware.gps.l80gps
 
+def getCor(data):
+    cor = (data['latitude'], float(data['altitude']), data['longitude'])
+    if cor[1] == '':
+        return (data['latitude'], 0, data['longitude'])
+    return cor
+
 if __name__ == '__main__':
     gps = microstacknode.hardware.gps.l80gps.L80GPS()
     while True:
         data = gps.get_gpgga()
-        print(data.keys(), data.values())
+        vec = getCor(data)
+        print('lat alt long')
+        print(vec)
         time.sleep(1)
