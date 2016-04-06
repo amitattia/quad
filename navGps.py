@@ -40,12 +40,12 @@ def backwards():
     bus.write_block_data(address, 2, [1, 3, 50])
     time.sleep(0.2)
 
-def left():
+def right():
     bus.write_block_data(address, 2, [0, 4, 100])
     time.sleep(0.2)
 
-def right():
-    bus.write_block_data(address, 2, [0, 3, 100])
+def left():
+    bus.write_block_data(address, 2, [0, 3, 50])
     time.sleep(0.2)
 
 def getCor(data):
@@ -66,17 +66,16 @@ if __name__ == '__main__':
         dst = getCor(gps.get_gpgga())
         print(dst)
         tmp = input("Press enter..")
-    #zero()
     while True:
         try:
             bus.write_block_data(address, 2, [0, 4, 0])
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
+            time.sleep(4)
             loc = getCor(gps.get_gpgga())
             print(dst)
             print(loc)
-            zero()
             if(abs(dst[0]-loc[0]) > e1):
                 if(dst[0] > loc[0]):
                     print('f')
@@ -86,12 +85,12 @@ if __name__ == '__main__':
                     backwards()
             if(abs(dst[1]-loc[1]) > e2):
                 if(dst[2] > loc[2]):
-                    print('r')
-                    right()
-                else:
                     print('l')
                     left()
-            time.sleep(0.5)
+                else:
+                    print('r')
+                    right()
+            time.sleep(3)
         except KeyboardInterrupt:
             print('ctrl+c')
             zero()
