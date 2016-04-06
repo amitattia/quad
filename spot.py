@@ -68,7 +68,7 @@ if __name__ == '__main__':
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
             gps = microstacknode.hardware.gps.l80gps.L80GPS()
-            time.sleep(1)
+            time.sleep(3)
             loc = getCor(gps.get_gpgga())
             #time.sleep(4)
             #loc = getCor(gps.get_gpgga())
