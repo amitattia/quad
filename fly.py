@@ -1,5 +1,6 @@
 import smbus
 import time
+import microstacknode.hardware.gps.l80gps
 bus = smbus.SMBus(1)
 address = 0x04
 def writeNumber(value):
@@ -13,22 +14,35 @@ def all():
     bus.write_block_data(address, 2, [3, 6, 148])
 
 def zero():
-    bus.write_block_data(address, 2, [0, 4, 0])
+    tmp = 0.2
     bus.write_block_data(address, 2, [1, 4, 0])
+    time.sleep(tmp)
+    bus.write_block_data(address, 2, [0, 4, 0])
+    time.sleep(tmp)
     bus.write_block_data(address, 2, [2, 4, 0])
+    time.sleep(tmp)
     bus.write_block_data(address, 2, [3, 4, 0])
+    time.sleep(tmp)
 
 def up():
     bus.write_block_data(address, 2, [2, 4, 100])
+    time.sleep(0.2)
 
 def down():
     bus.write_block_data(address, 2, [2, 3, 100])
+    time.sleep(0.2)
 
 def forwards():
-    bus.write_block_data(address, 2, [1, 4, 150])
+    bus.write_block_data(address, 2, [1, 4, 250])
+    time.sleep(0.2)
 
 def backwards():
     bus.write_block_data(address, 2, [1, 3, 100])
+    time.sleep(0.2)
+
+def right():
+    bus.write_block_data(address, 2, [0, 3, 100])
+    time.sleep(0.2)
 
 def cool():
     zero()
@@ -82,15 +96,24 @@ def enter():
 
 #cool()
 t = 1
+gps = microstacknode.hardware.gps.l80gps.L80GPS()
 while True:
     try:
-        time.sleep(1)
+        dst = gps.get_gpgga()
+        print('z')
+        zero()
+        time.sleep(0.2)
+        print('f')
         forwards()
-        print("f")
-        time.sleep(1)
+        time.sleep(2)
+        print('b')
         backwards()
-        print("b")
+        time.sleep(0.5)
+    except KeyboardInterrupt:
+        print('ctrl+c')
+        zero()
         time.sleep(1)
+        exit()
     except:
         print("io")
         time.sleep(1)
