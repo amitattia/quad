@@ -2,7 +2,7 @@ import time
 import microstacknode.hardware.gps.l80gps
 
 def getCor(data):
-    if cor[1] == '':
+    if data['altitude'] == '':
         return (data['latitude'], 0, data['longitude'])
     cor = (data['latitude'], float(data['altitude']), data['longitude'])
     return cor
