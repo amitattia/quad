@@ -55,7 +55,7 @@ def getCor(data):
     return cor
 
 if __name__ == '__main__':
-    #gps = microstacknode.hardware.gps.l80gps.L80GPS()
+    gps = microstacknode.hardware.gps.l80gps.L80GPS()
     #e1 = 0
     #e2 = 0
     e1 = 0.00007
@@ -67,8 +67,14 @@ if __name__ == '__main__':
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
-            time.sleep(4)
+            gps = microstacknode.hardware.gps.l80gps.L80GPS()
+            time.sleep(1)
             loc = getCor(gps.get_gpgga())
+            #time.sleep(4)
+            #loc = getCor(gps.get_gpgga())
+            #time.sleep(0.3)
+            #for i in  range(6):
+            #    loc = getCor(gps.get_gpgga())
             #print(dst)
             #print(loc)
             print('lat')
