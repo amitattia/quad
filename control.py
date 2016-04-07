@@ -1,4 +1,4 @@
-import commandP
+from commandP import *
 import time
 import sys
 
