@@ -1,5 +1,6 @@
 #import modules
 import gpsP
+import scamP
 
 #main function
 if __name__ == "__main__":
