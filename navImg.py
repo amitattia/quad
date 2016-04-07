@@ -107,7 +107,7 @@ with picamera.PiCamera() as camera:
             print('ctrl+c')
             zero()
             exit()
-        except:
-            print("io")
-            time.sleep(1)
+        #except:
+        #    print("io")
+        #    time.sleep(1)
     
