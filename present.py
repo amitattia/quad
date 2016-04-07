@@ -11,9 +11,11 @@ if __name__ == "__main__":
             if mode == 'g':
                 gpsP.gpsNavigation()
             if mode == 's':
-                scanP.scanArea()
+                tmp = scanP.scanArea()
+                if tmp == False:
+                    input('Scan failed')
             if mode == 'i':
-                print('empty')
+                imgP.navigateImg()
             if mode == 'e':
                 exit()
         except KeyboardInterrupt:
