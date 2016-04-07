@@ -84,7 +84,7 @@ with picamera.PiCamera() as camera:
             loc = getCenter(mask)
             print('loc')
             print(loc)
-            cv2.waitKey(0)
+            time.sleep(1)
             cv2.destroyAllWindows()
             print('fb')
             print(dst[0]-loc[0])
@@ -96,3 +96,4 @@ with picamera.PiCamera() as camera:
             time.sleep(2)
         except KeyboardInterrupt:
         	print('ctrl+c')
+        	exit()
