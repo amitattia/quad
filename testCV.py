@@ -56,7 +56,8 @@ def left():
     bus.write_block_data(address, 2, [0, 3, 50])
     time.sleep(0.2)
 
-stream = io.BytesIO()
+#stream = io.BytesIO()
+stream = picamera.array.PiRGBArray(camera)
 with picamera.PiCamera() as camera:
     camera.resolution = (1024, 768)
     time.sleep(2)
@@ -67,14 +68,16 @@ with picamera.PiCamera() as camera:
         try:
             time.sleep(2)
             stream.flush()
-            camera.capture(stream, format='jpeg')
+            #camera.capture(stream, format='jpeg')
+            camera.capture(stream, format='bgr')
             # Construct a numpy array from the stream
-            data = np.fromstring(stream.getvalue(), dtype=np.uint8)
+            #data = np.fromstring(stream.getvalue(), dtype=np.uint8)
             # Decode" the image from the array, preserving colour
-            frame = cv2.imdecode(data, 1)
+            #frame = cv2.imdecode(data, 1)
             # OpenCV returns an array with data in BGR order. If you want RGB instead
             # use the following...
-            frame = frame[:, :, ::-1]
+            #frame = frame[:, :, ::-1]
+            frame = stream.array
             
             hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
             lower_blue = np.array([100,50,50])
