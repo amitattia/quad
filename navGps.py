@@ -93,7 +93,7 @@ if __name__ == '__main__':
                 else:
                     print('r')
                     right()
-            if w == 0:
+            if w == 2:
                 input('Enter to continue...')
             time.sleep(3)
         except KeyboardInterrupt:
