@@ -58,12 +58,13 @@ def left():
     bus.write_block_data(address, 2, [0, 3, 50])
     time.sleep(0.2)
 
+# initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
-rawCapture = PiRGBArray(camera)
-camera.resolution = (1024, 768)
+camera.resolution = (640, 480)
+camera.framerate = 32
+rawCapture = PiRGBArray(camera, size=(640, 480))
 # allow the camera to warmup
 time.sleep(0.1)
-camera.resolution = (1024, 768)
 time.sleep(2)
 dst = (1024/2, 768/2)
 e1 = 0
