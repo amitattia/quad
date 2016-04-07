@@ -61,6 +61,8 @@ with picamera.PiCamera() as camera:
     camera.resolution = (1024, 768)
     time.sleep(2)
     dst = (1024/2, 768/2)
+    e1 = 0
+    e2 = 0
     while True:
         try:
             time.sleep(2)
