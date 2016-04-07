@@ -57,10 +57,10 @@ def getCor(data):
 if __name__ == '__main__':
     gps = microstacknode.hardware.gps.l80gps.L80GPS()
     tmp = 'b'
-    e1 = 0
-    e2 = 0
-    #e1 = 0.00005
-    #e2 = 0.00005
+    #e1 = 0
+    #e2 = 0
+    e1 = 0.0001
+    e2 = 0.0001
     while(tmp != 'a'):
         time.sleep(1)
         dst = getCor(gps.get_gpgga())
@@ -68,6 +68,7 @@ if __name__ == '__main__':
         tmp = input("Press enter..")
     while True:
         try:
+            w = 2
             bus.write_block_data(address, 2, [0, 4, 0])
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
@@ -77,6 +78,7 @@ if __name__ == '__main__':
             print(dst)
             print(loc)
             if(abs(dst[0]-loc[0]) > e1):
+                w = w - 1
                 if(dst[0] > loc[0]):
                     print('f')
                     forwards()
@@ -84,12 +86,15 @@ if __name__ == '__main__':
                     print('b')
                     backwards()
             if(abs(dst[1]-loc[1]) > e2):
+                w = w - 1
                 if(dst[2] > loc[2]):
                     print('l')
                     left()
                 else:
                     print('r')
                     right()
+            if w == 0:
+                input('Enter to continue...')
             time.sleep(3)
         except KeyboardInterrupt:
             print('ctrl+c')
