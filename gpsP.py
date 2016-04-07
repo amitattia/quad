@@ -1,6 +1,6 @@
 import time
 import microstacknode.hardware.gps.l80gps
-import commandP.py
+import commandP
 
 def getCor(data):
     cor = (data['latitude'], data['longitude'])
