@@ -15,4 +15,5 @@ def drop():
     pwm.ChangeDutyCycle(50)
 
 if __name__ == "__main__":
+    time.sleep(1)
     drop()
