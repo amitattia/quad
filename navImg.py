@@ -4,6 +4,7 @@ import picamera
 import picamera.array
 import cv2
 import smbus
+import numpy as np
 from scipy import ndimage
 bus = smbus.SMBus(1)
 address = 0x04
