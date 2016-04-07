@@ -75,11 +75,11 @@ try:
             print(dst[1]-loc[1])
             if(abs(dst[1]-loc[1]) > e1):
                 if(dst[1] > loc[1]):
-                    print('f')
-                    forwards()
-                else:
                     print('b')
                     backwards()
+                else:
+                    print('f')
+                    forwards()
             #if(abs(dst[0]-loc[0]) > e2):
             #    if(dst[0] > loc[0]):
             #        print('l')
@@ -92,7 +92,7 @@ try:
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
-            time.sleep(2)
+            time.sleep(1)
             rawCapture.truncate(0)
         except OSError:
             print('io')
