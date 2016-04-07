@@ -5,7 +5,7 @@ import imgP
 
 #main function
 if __name__ == "__main__":
-    mode = input('Enter (g|s|i|e)...')
+    mode = input('Enter (g|s|i|d|e)...')
     while True:
         try:
             if mode == 'g':
@@ -16,8 +16,10 @@ if __name__ == "__main__":
                     input('Scan failed')
             if mode == 'i':
                 imgP.navigateImg()
+            if mode == 'd':
+                drop.drop()
             if mode == 'e':
                 exit()
         except KeyboardInterrupt:
             print('ctrl+c')
-            mode = input('Enter (g|s|i|e)...')
+            mode = input('Enter (g|s|i|d|e)...')
