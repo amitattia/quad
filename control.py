@@ -40,22 +40,22 @@ def control():
         try:
             print("press (W|A|S|D), O for up, L for down")
             press = getch()
-            if(press == 'a')
+            if(press == "a"):
                 left()
                 time.sleep(1)
-            elif (press == "w")
+            elif (press == "w"):
                 forward()
                 time.sleep(1)
-            elif (press == "s")
+            elif (press == "s"):
                 backward()
                 time.sleep(1)
-            elif( press == "d")
+            elif( press == "d"):
                 right()
                 time.sleep(1)
-            elif(press == "o")
+            elif(press == "o"):
                 up()
                 time.sleep(1)
-            elif(press == "l")
+            elif(press == "l"):
                 down()
                 time.sleep(1)
             
