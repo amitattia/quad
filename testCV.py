@@ -103,10 +103,10 @@ with picamera.PiCamera() as camera:
             #        print('r')
             #        right()
             time.sleep(2)
-            except KeyboardInterrupt:
-                print('ctrl+c')
-                zero()
-                exit()
+            #except KeyboardInterrupt:
+            #    print('ctrl+c')
+            #    zero()
+            #    exit()
         #except:
         #    print("io")
         #    time.sleep(1)
