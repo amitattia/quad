@@ -57,8 +57,8 @@ def left():
     time.sleep(0.2)
 
 #stream = io.BytesIO()
-stream = picamera.array.PiRGBArray(camera)
 with picamera.PiCamera() as camera:
+    stream = picamera.array.PiRGBArray(camera)
     camera.resolution = (1024, 768)
     time.sleep(2)
     dst = (1024/2, 768/2)
