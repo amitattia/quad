@@ -17,3 +17,4 @@ def drop():
 if __name__ == "__main__":
     time.sleep(1)
     drop()
+    GPIO.cleanup()
