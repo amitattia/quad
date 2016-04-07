@@ -10,7 +10,7 @@ if __name__ == "__main__":
             if mode == 'g':
                 gpsP.gpsNavigation()
             if mode == 's':
-                print('empty')
+                scanP.scanArea()
             if mode == 'i':
                 print('empty')
             if mode == 'e':
