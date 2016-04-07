@@ -60,6 +60,7 @@ stream = io.BytesIO()
 with picamera.PiCamera() as camera:
     camera.resolution = (1024, 768)
     time.sleep(2)
+    dst = (1024/2, 768/2)
     while True:
         try:
             time.sleep(2)
