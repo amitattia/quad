@@ -7,13 +7,13 @@ if __name__ == "__main__":
     while True:
         try:
             if mode == 'g':
-                print('empty')
+                gpsP.gpsNavigation()
             if mode == 's':
                 print('empty')
             if mode == 'i':
                 print('empty')
             if mode == 'e':
-                print('empty')
+                exit()
         except KeyboardInterrupt:
             print('ctrl+c')
             mode = input('Enter (g|s|i|e)...')
