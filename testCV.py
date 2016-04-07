@@ -82,6 +82,8 @@ with picamera.PiCamera() as camera:
             mask = cv2.inRange(hsv, lower_blue, upper_blue)
             cv2.imshow('mask', mask)
             loc = getCenter(mask)
+            cv2.waitKey(1)
+            
             print('loc')
             print(loc)
             print('fb')
