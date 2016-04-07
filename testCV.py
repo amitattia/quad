@@ -2,6 +2,8 @@ import time
 import io
 import picamera
 import picamera.array
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 import cv2
 import smbus
 import numpy as np
@@ -56,49 +58,43 @@ def left():
     bus.write_block_data(address, 2, [0, 3, 50])
     time.sleep(0.2)
 
-#stream = io.BytesIO()
-with picamera.PiCamera() as camera:
-    stream = picamera.array.PiRGBArray(camera)
-    camera.resolution = (1024, 768)
-    time.sleep(2)
-    dst = (1024/2, 768/2)
-    e1 = 0
-    e2 = 0
-    while True:
-        try:
-            time.sleep(2)
-            stream.flush()
-            #camera.capture(stream, format='jpeg')
-            camera.capture(stream, format='bgr')
-            # Construct a numpy array from the stream
-            #data = np.fromstring(stream.getvalue(), dtype=np.uint8)
-            # Decode" the image from the array, preserving colour
-            #frame = cv2.imdecode(data, 1)
-            # OpenCV returns an array with data in BGR order. If you want RGB instead
-            # use the following...
-            #frame = frame[:, :, ::-1]
-            frame = stream.array
-            
-            hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-            lower_blue = np.array([100,50,50])
-            upper_blue = np.array([120,255,255])
-            mask = cv2.inRange(hsv, lower_blue, upper_blue)
-            #cv2.imshow('mask', mask)
-            cv2.imshow('mask', frame)
-            loc = getCenter(mask)
-            cv2.waitKey(1)
-            
-            print('loc')
-            print(loc)
-            print('fb')
-            print(dst[0]-loc[0])
-            if(abs(dst[0]-loc[0]) > e1):
-                if(dst[0] > loc[0]):
-                    print('f')
-                else:
-                    print('b')
-            time.sleep(2)
-        except KeyboardInterrupt:
-        	print('ctrl+c')
-        	cv2.destroyAllWindows()
-        	exit()
+camera = PiCamera()
+rawCapture = PiRGBArray(camera)
+camera.resolution = (1024, 768)
+# allow the camera to warmup
+time.sleep(0.1)
+camera.resolution = (1024, 768)
+time.sleep(2)
+dst = (1024/2, 768/2)
+e1 = 0
+e2 = 0
+while True:
+    try:
+        time.sleep(2)
+        
+        camera.capture(rawCapture, format="bgr")
+        frame = rawCapture.array
+        
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        lower_blue = np.array([100,50,50])
+        upper_blue = np.array([120,255,255])
+        mask = cv2.inRange(hsv, lower_blue, upper_blue)
+        #cv2.imshow('mask', mask)
+        cv2.imshow('mask', frame)
+        loc = getCenter(mask)
+        cv2.waitKey(1)
+        
+        print('loc')
+        print(loc)
+        print('fb')
+        print(dst[0]-loc[0])
+        if(abs(dst[0]-loc[0]) > e1):
+            if(dst[0] > loc[0]):
+                print('f')
+            else:
+                print('b')
+        time.sleep(2)
+    except KeyboardInterrupt:
+    	print('ctrl+c')
+    	cv2.destroyAllWindows()
+    	exit()
