@@ -61,31 +61,34 @@ dst = (320, 240)
 try:
     # capture frames from the camera
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-        # grab the raw NumPy array representing the image, then initialize the timestamp
-        # and occupied/unoccupied text
-        image = frame.array
-    	
-        hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-        lower_blue = np.array([100,50,50])
-        upper_blue = np.array([120,255,255])
-        mask = cv2.inRange(hsv, lower_blue, upper_blue)
-        loc = getCenter(mask)
-        print(loc)
-        print(dst[0]-loc[0])
-        if(abs(dst[0]-loc[0]) > e1):
-            if(dst[0] > loc[0]):
-                print('f')
-                forwards()
-            else:
-                print('b')
-                backwards()
-        time.sleep(1)
-        bus.write_block_data(address, 2, [0, 4, 0])
-        time.sleep(0.2)
-        bus.write_block_data(address, 2, [1, 4, 0])
-        time.sleep(0.2)
-        time.sleep(2)
-        rawCapture.truncate(0)
+        try:
+            # grab the raw NumPy array representing the image, then initialize the timestamp
+            # and occupied/unoccupied text
+            image = frame.array
+        	
+            hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+            lower_blue = np.array([100,50,50])
+            upper_blue = np.array([120,255,255])
+            mask = cv2.inRange(hsv, lower_blue, upper_blue)
+            loc = getCenter(mask)
+            print(loc)
+            print(dst[0]-loc[0])
+            if(abs(dst[0]-loc[0]) > e1):
+                if(dst[0] > loc[0]):
+                    print('f')
+                    forwards()
+                else:
+                    print('b')
+                    backwards()
+            time.sleep(1)
+            bus.write_block_data(address, 2, [0, 4, 0])
+            time.sleep(0.2)
+            bus.write_block_data(address, 2, [1, 4, 0])
+            time.sleep(0.2)
+            time.sleep(2)
+            rawCapture.truncate(0)
+        except OSError:
+            print('io')
 except KeyboardInterrupt:
     print('ctrl+c')
     zero()
