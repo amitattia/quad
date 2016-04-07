@@ -1,6 +1,7 @@
 #import modules
 import gpsP
 import scanP
+import imgP
 
 #main function
 if __name__ == "__main__":
