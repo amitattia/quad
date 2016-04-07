@@ -104,9 +104,9 @@ with picamera.PiCamera() as camera:
             #        right()
             time.sleep(2)
             except KeyboardInterrupt:
-            print('ctrl+c')
-            zero()
-            exit()
+                print('ctrl+c')
+                zero()
+                exit()
         #except:
         #    print("io")
         #    time.sleep(1)
