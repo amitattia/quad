@@ -40,7 +40,7 @@ def control():
         try:
             print("press (W|A|S|D), O for up, L for down")
             press = getch()
-            if(press == "a")
+            if(press == 'a')
                 left()
                 time.sleep(1)
             elif (press == "w")
