@@ -91,23 +91,11 @@ with picamera.PiCamera() as camera:
             if(abs(dst[0]-loc[0]) > e1):
                 if(dst[0] > loc[0]):
                     print('f')
-                    #forwards()
                 else:
                     print('b')
-                    #backwards()
-            #if(abs(dst[1]-loc[1]) > e2):
-            #    if(dst[2] > loc[2]):
-            #        print('l')
-            #        left()
-            #    else:
-            #        print('r')
-            #        right()
             time.sleep(2)
             #except KeyboardInterrupt:
             #    print('ctrl+c')
             #    zero()
             #    exit()
-        #except:
-        #    print("io")
-        #    time.sleep(1)
     
