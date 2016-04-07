@@ -72,14 +72,21 @@ try:
             mask = cv2.inRange(hsv, lower_blue, upper_blue)
             loc = getCenter(mask)
             print(loc)
-            print(dst[0]-loc[0])
-            if(abs(dst[0]-loc[0]) > e1):
-                if(dst[0] > loc[0]):
+            print(dst[1]-loc[1])
+            if(abs(dst[1]-loc[1]) > e1):
+                if(dst[1] > loc[1]):
                     print('f')
                     forwards()
                 else:
                     print('b')
                     backwards()
+            #if(abs(dst[0]-loc[0]) > e2):
+            #    if(dst[0] > loc[0]):
+            #        print('l')
+            #        left()
+            #    else:
+            #        print('r')
+            #        right()
             time.sleep(1)
             bus.write_block_data(address, 2, [0, 4, 0])
             time.sleep(0.2)
