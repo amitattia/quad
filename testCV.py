@@ -84,7 +84,8 @@ with picamera.PiCamera() as camera:
             loc = getCenter(mask)
             print('loc')
             print(loc)
-                
+            cv2.waitKey(0)
+        	cv2.destroyAllWindows()
             print('fb')
             print(dst[0]-loc[0])
             if(abs(dst[0]-loc[0]) > e1):
