@@ -50,8 +50,8 @@ camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera, size=(640, 480))
-e1 = 0.00000
-e2 = 0.00000
+e1 = 30.00000
+e2 = 30.00000
  
 # allow the camera to warmup
 time.sleep(0.1)
@@ -80,19 +80,23 @@ try:
                 else:
                     print('f')
                     forwards()
-            #if(abs(dst[0]-loc[0]) > e2):
-            #    if(dst[0] > loc[0]):
-            #        print('l')
-            #        left()
-            #    else:
-            #        print('r')
-            #        right()
+            else:
+                print('fb good')
+            if(abs(dst[0]-loc[0]) > e2):
+                if(dst[0] > loc[0]):
+                    print('l')
+                    left()
+                else:
+                    print('r')
+                    right()
+            else:
+                print('lf good')
             time.sleep(1)
             bus.write_block_data(address, 2, [0, 4, 0])
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
-            time.sleep(1)
+            time.sleep(2)
             rawCapture.truncate(0)
         except OSError:
             print('io')
