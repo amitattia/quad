@@ -98,4 +98,3 @@ with picamera.PiCamera() as camera:
             #    print('ctrl+c')
             #    zero()
             #    exit()
-    
