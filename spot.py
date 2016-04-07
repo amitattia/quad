@@ -58,8 +58,8 @@ if __name__ == '__main__':
     gps = microstacknode.hardware.gps.l80gps.L80GPS()
     #e1 = 0
     #e2 = 0
-    e1 = 0.00007
-    e2 = 0.00007
+    e1 = 0.00012
+    e2 = 0.00012
     dst = (31.7702385, 770.813999, 35.1974727) 
     while True:
         try:
@@ -67,9 +67,9 @@ if __name__ == '__main__':
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
-            gps = microstacknode.hardware.gps.l80gps.L80GPS()
-            time.sleep(3)
-            loc = getCor(gps.get_gpgga())
+            time.sleep(2)
+            for i in range(2):
+                loc = getCor(gps.get_gpgga())
             #time.sleep(4)
             #loc = getCor(gps.get_gpgga())
             #time.sleep(0.3)
