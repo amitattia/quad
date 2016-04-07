@@ -35,6 +35,8 @@ else:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
 
+wait = 0.5
+
 def control():
     while True:
         try:
@@ -42,22 +44,22 @@ def control():
             press = getch()
             if(press == "a"):
                 left()
-                time.sleep(1)
+                time.sleep(wait)
             elif (press == "w"):
                 forwards()
-                time.sleep(1)
+                time.sleep(wait)
             elif (press == "s"):
                 backwards()
-                time.sleep(1)
+                time.sleep(wait)
             elif( press == "d"):
                 right()
-                time.sleep(1)
+                time.sleep(wait)
             elif(press == "o"):
                 up()
-                time.sleep(1)
+                time.sleep(wait)
             elif(press == "l"):
                 down()
-                time.sleep(1)
+                time.sleep(wait)
             
             zero()
             
