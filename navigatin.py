@@ -4,6 +4,9 @@ import time
 import cv2
 import numpy as np
 from scipy import ndimage
+import smbus
+bus = smbus.SMBus(1)
+address = 0x04
 
 def getCenter(image):
     return ndimage.measurements.center_of_mass(image)
