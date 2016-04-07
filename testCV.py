@@ -66,7 +66,7 @@ with picamera.PiCamera() as camera:
     while True:
         try:
             time.sleep(2)
-                
+            stream.flush()
             camera.capture(stream, format='jpeg')
             # Construct a numpy array from the stream
             data = np.fromstring(stream.getvalue(), dtype=np.uint8)
