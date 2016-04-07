@@ -44,10 +44,10 @@ def control():
                 left()
                 time.sleep(1)
             elif (press == "w"):
-                forward()
+                forwards()
                 time.sleep(1)
             elif (press == "s"):
-                backward()
+                backwards()
                 time.sleep(1)
             elif( press == "d"):
                 right()
