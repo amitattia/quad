@@ -20,6 +20,8 @@ def gpsNavigation():
             time.sleep(0.2)
             time.sleep(7)
             loc = getCor(gps.get_gpgga())
+            print(dst[0]-loc[0])
+            print(dst[1]-loc[1])
             if(abs(dst[0]-loc[0]) > e1):
                 w = w - 1
                 if(dst[0] > loc[0]):
