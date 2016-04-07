@@ -35,35 +35,60 @@ else:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
 
-wait = 0.5
+
 
 def control():
-    while True:
-        try:
-            print("press (W|A|S|D), O for up, L for down")
-            press = getch()
-            if(press == "a"):
-                left()
-                time.sleep(wait)
-            elif (press == "w"):
-                forwards()
-                time.sleep(wait)
-            elif (press == "s"):
-                backwards()
-                time.sleep(wait)
-            elif( press == "d"):
-                right()
-                time.sleep(wait)
-            elif(press == "o"):
-                up()
-                time.sleep(wait)
-            elif(press == "l"):
-                down()
-                time.sleep(wait)
-            
-            zero()
-            
+    bool = input("press d to delay, f to flow")
+    if(bool == "d"):
+        print("delay mode")
+        wait = input("enter delay time:")
+        while True:
+            try:
+                print("press (W|A|S|D), O for up, L for down")
+                press = getch()
+                if(press == "a"):
+                    left()
+                    time.sleep(wait)
+                elif (press == "w"):
+                    forwards()
+                    time.sleep(wait)
+                elif (press == "s"):
+                    backwards()
+                    time.sleep(wait)
+                elif( press == "d"):
+                    right()
+                    time.sleep(wait)
+                elif(press == "o"):
+                    up()
+                    time.sleep(wait)
+                elif(press == "l"):
+                    down()
+                    time.sleep(wait)
+                
+                zero()
         except IOError:
             print('io')
             time.sleep(1)
-        
+    else:
+        print("flow mode")
+        while True:
+            try:
+                print("press (W|A|S|D), O for up, L for down, Q to stop")
+                press = getch()
+                if(press == "a"):
+                    left()
+                elif (press == "w"):
+                    forwards()
+                elif (press == "s"):
+                    backwards()
+                elif( press == "d"):
+                    right()
+                elif(press == "o"):
+                    up()
+                elif(press == "l"):
+                    down()
+                elif(press == "q")
+                    zero()
+        except IOError:
+            print('io')
+            time.sleep(1)
