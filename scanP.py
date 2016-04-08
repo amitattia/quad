@@ -12,6 +12,7 @@ def scanArea(threshold = 400):
     camera.resolution = (640, 480)
     camera.framerate = 32
     rawCapture = PiRGBArray(camera, size=(640, 480))
+    time.sleep(0.2)
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
         if myCount%4 == 0:
             forwards()
