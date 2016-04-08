@@ -33,7 +33,7 @@ def scanArea(threshold = 400):
         lower_blue = np.array([100,50,50])
         upper_blue = np.array([120,255,255])
         mask = cv2.inRange(hsv, lower_blue, upper_blue)
-        if cv2.countNonZero(mask) < threshold:
+        if cv2.countNonZero(mask) > threshold:
             print(cv2.countNonZero(mask))
             return True
         if myCount > 6:
