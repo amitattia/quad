@@ -6,10 +6,9 @@ import numpy as np
 from scipy import ndimage
 from commandP import *
 
-camera = PiCamera()
-
 def scanArea(threshold = 400):
     myCount = 0
+    camera = PiCamera()
     camera.resolution = (640, 480)
     camera.framerate = 32
     rawCapture = PiRGBArray(camera, size=(640, 480))
