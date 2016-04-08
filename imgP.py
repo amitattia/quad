@@ -49,10 +49,7 @@ def navigateImg():
             else:
                 print('lf good')
             time.sleep(1)
-            bus.write_block_data(address, 2, [0, 4, 0])
-            time.sleep(0.2)
-            bus.write_block_data(address, 2, [1, 4, 0])
-            time.sleep(0.2)
+            zero()
             time.sleep(2)
             rawCapture.truncate(0)
         except OSError:
