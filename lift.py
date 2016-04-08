@@ -5,4 +5,3 @@ import sys
 
 
 def lift():
-  
