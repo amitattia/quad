@@ -55,6 +55,3 @@ def navigateImg():
             rawCapture.truncate(0)
         except OSError:
             print('io')
-        except KeyboardInterrupt:
-            camera.close()
-            raise
