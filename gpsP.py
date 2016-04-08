@@ -18,7 +18,9 @@ def gpsNavigation():
             time.sleep(0.2)
             bus.write_block_data(address, 2, [1, 4, 0])
             time.sleep(0.2)
-            time.sleep(7)
+            for i in range (1,7):
+                loc = getCor(gps.get_gpgga())
+                time.sleep(1)
             loc = getCor(gps.get_gpgga())
             print(dst[0]-loc[0])
             print(dst[1]-loc[1])
