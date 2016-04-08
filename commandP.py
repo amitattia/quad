@@ -13,8 +13,22 @@ def zero():
     bus.write_block_data(address, 2, [3, 4, 0])
     time.sleep(0.2)
 
+def all():
+    bus.write_block_data(address, 2, [0, 1, 107])
+    time.sleep(0.2)
+    bus.write_block_data(address, 2, [1, 1, 107])
+    time.sleep(0.2)
+    bus.write_block_data(address, 2, [2, 1, 107])
+    time.sleep(0.2)
+    bus.write_block_data(address, 2, [3, 6, 148])
+    time.sleep(0.2)
+
 def up():
     bus.write_block_data(address, 2, [2, 4, 200])
+    time.sleep(0.2)
+    
+def maxup()
+    bus.write_block_data(address, 2, [2, 6, 148])
     time.sleep(0.2)
 
 def down():
