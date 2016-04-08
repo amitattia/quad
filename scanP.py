@@ -15,13 +15,17 @@ def scanArea(threshold = 400):
     time.sleep(0.2)
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
         if myCount%4 == 0:
+            print('f')
             forwards()
         if myCount%4 == 1:
-            forwards()
+            print('r')
+            right()
         if myCount%4 == 2:
-            forwards()
+            print('b')
+            backwards()
         if myCount%4 == 3:
-            forwards()
+            print('l')
+            left()
         time.sleep(2)
         myCount = myCount + 1
         image = frame.array
