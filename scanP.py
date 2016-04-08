@@ -33,4 +33,6 @@ def scanArea(threshold = 400):
             return True
         if myCount > 6:
             return False
-    
+            
+if __name__ == "__main__":
+    scanArea()
