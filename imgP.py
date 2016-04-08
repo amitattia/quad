@@ -4,6 +4,7 @@ import time
 import cv2
 import numpy as np
 from scipy import ndimage
+from commandP import *
 
 def getCenter(image):
     return ndimage.measurements.center_of_mass(image)
