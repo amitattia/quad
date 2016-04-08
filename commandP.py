@@ -27,7 +27,7 @@ def up():
     bus.write_block_data(address, 2, [2, 4, 200])
     time.sleep(0.2)
     
-def maxup()
+def maxup():
     bus.write_block_data(address, 2, [2, 6, 148])
     time.sleep(0.2)
 
