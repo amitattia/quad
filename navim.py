@@ -31,8 +31,8 @@ def navigateImg():
             upper_blue = np.array([120,255,255])
             mask = cv2.inRange(hsv, lower_blue, upper_blue)
             loc = getCenter(mask)
-            print(loc)
             print(dst[1]-loc[1])
+            print(dst[0]-loc[0])
             if(abs(dst[1]-loc[1]) > e1):
                 if(dst[1] > loc[1]):
                     print('b')
