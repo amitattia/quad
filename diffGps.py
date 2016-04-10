@@ -26,20 +26,22 @@ def gpsNavigation():
             print(dst[1]-loc[1])
             if(abs(dst[0]-loc[0]) > e1):
                 w = w - 1
+                speed = min(250,(dst[0]-loc[0]-0.0001)*3*10**6)
                 if(dst[0] > loc[0]):
                     print('f')
-                    forwards(200)
+                    forwards(speed)
                 else:
                     print('b')
-                    backwards(200)
+                    backwards(-speed)
             if(abs(dst[1]-loc[1]) > e2):
                 w = w - 1
+                speed = min(250,(dst[1]-loc[1]-0.0001)*3*10**6)
                 if(dst[1] > loc[1]):
                     print('r')
-                    right(100)
+                    right(speed)
                 else:
                     print('l')
-                    left(100)
+                    left(-speed)
             if w == 2:
                 print('yay!')
                 time.sleep(5)
