@@ -25,7 +25,7 @@ def navigateImg():
             # grab the raw NumPy array representing the image, then initialize the timestamp
             # and occupied/unoccupied text
             image = frame.array
-        	w = 0
+            w = 0
             hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
             lower_blue = np.array([100,50,50])
             upper_blue = np.array([120,255,255])
