@@ -49,3 +49,6 @@ def gpsNavigation():
         except IOError:
             print('io')
             time.sleep(1)
+
+if __name__ == "__main__":
+    gpsNavigation()
