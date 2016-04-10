@@ -61,3 +61,6 @@ def navigateImg():
             rawCapture.truncate(0)
         except OSError:
             print('io')
+
+if __name__ == "__main__":
+    navigateImg()
