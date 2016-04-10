@@ -11,14 +11,14 @@ def gpsNavigation():
     e1 = 0.0001
     e2 = 0.0001
     dst = [0, 0]
+    moveTime = 2
+    sleepTime = 7
     while True:
         try:
             w = 2
-            bus.write_block_data(address, 2, [0, 4, 0])
-            time.sleep(0.2)
-            bus.write_block_data(address, 2, [1, 4, 0])
-            time.sleep(0.2)
-            for i in range (1,7):
+            forwards(0)
+            right(0)
+            for i in range (1,sleepTime):
                 loc = getCor(gps.get_gpgga())
                 time.sleep(1)
             loc = getCor(gps.get_gpgga())
@@ -41,8 +41,9 @@ def gpsNavigation():
                     print('l')
                     left()
             if w == 2:
-                input('Enter to continue...')
-            time.sleep(2)
+                print('yay!')
+                time.sleep(5)
+            time.sleep(moveTime)
         except IOError:
             print('io')
             time.sleep(1)
