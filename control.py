@@ -41,7 +41,7 @@ def control():
     bool = input("press d to delay, f to flow")
     if(bool == "d"):
         print("delay mode")
-        wait = input("enter delay time:")
+        wait = int(input("enter delay time:"))
         while True:
             try:
                 print("press (W|A|S|D), O for up, L for down")
