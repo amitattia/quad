@@ -28,18 +28,18 @@ def gpsNavigation():
                 w = w - 1
                 if(dst[0] > loc[0]):
                     print('f')
-                    forwards()
+                    forwards(200)
                 else:
                     print('b')
-                    backwards()
+                    backwards(200)
             if(abs(dst[1]-loc[1]) > e2):
                 w = w - 1
                 if(dst[1] > loc[1]):
                     print('r')
-                    right()
+                    right(100)
                 else:
                     print('l')
-                    left()
+                    left(100)
             if w == 2:
                 print('yay!')
                 time.sleep(5)
