@@ -22,31 +22,31 @@ def all():
     time.sleep(0.2)
     bus.write_block_data(address, 2, [3, 6, 148])
     time.sleep(0.2)
-
-def up():
-    bus.write_block_data(address, 2, [2, 4, 200])
-    time.sleep(0.2)
     
 def maxup():
     bus.write_block_data(address, 2, [2, 6, 148])
     time.sleep(0.2)
 
-def down():
-    bus.write_block_data(address, 2, [2, 3, 50])
+def up(p = 100):
+    bus.write_block_data(address, 2, [2, 4, p])
     time.sleep(0.2)
 
-def forwards():
-    bus.write_block_data(address, 2, [1, 4, 200])
+def down(p = 100):
+    bus.write_block_data(address, 2, [2, 3, 255-p])
     time.sleep(0.2)
 
-def backwards():
-    bus.write_block_data(address, 2, [1, 3, 50])
+def forwards(p = 100):
+    bus.write_block_data(address, 2, [1, 4, p])
     time.sleep(0.2)
 
-def right():
-    bus.write_block_data(address, 2, [0, 4, 100])
+def backwards(p = 100):
+    bus.write_block_data(address, 2, [1, 3, 255-p])
     time.sleep(0.2)
 
-def left():
-    bus.write_block_data(address, 2, [0, 3, 50])
+def right(p = 100):
+    bus.write_block_data(address, 2, [0, 4, p])
+    time.sleep(0.2)
+
+def left(p = 100):
+    bus.write_block_data(address, 2, [0, 3, 255-p])
     time.sleep(0.2)
