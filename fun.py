@@ -1,17 +1,6 @@
 import time
 from commandP import *
 
-def all():
-    bus.write_block_data(address, 2, [0, 1, 107])
-    bus.write_block_data(address, 2, [1, 1, 107])
-    bus.write_block_data(address, 2, [2, 1, 107])
-    bus.write_block_data(address, 2, [3, 6, 148])
-
-
-def lift():
-    up(250)
-    time.sleep(5)
-
 def cool():
     zero()
     all()
