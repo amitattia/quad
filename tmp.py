@@ -4,9 +4,6 @@ import time
 import cv2
 import numpy as np
 from scipy import ndimage
-import smbus
-bus = smbus.SMBus(1)
-address = 0x04
 from commandP import *
 
 def getCenter(image):
@@ -17,18 +14,18 @@ camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 32
 rawCapture = PiRGBArray(camera, size=(640, 480))
-e1 = 30.00000
-e2 = 30.00000
  
 # allow the camera to warmup
 time.sleep(0.1)
 
-dst = (320, 240)
-
 try:
     # capture frames from the camera
     for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-        try:
+        try
+        
+            myCount = 0
+            
+            
             # grab the raw NumPy array representing the image, then initialize the timestamp
             # and occupied/unoccupied text
             image = frame.array
