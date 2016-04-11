@@ -3,6 +3,10 @@ import smbus
 bus = smbus.SMBus(1)
 address = 0x04
 
+def lift():
+    bus.write_block_data(address, 2, [2, 6, 148])
+    time.sleep(5)
+
 def zero():
     bus.write_block_data(address, 2, [0, 4, 0])
     time.sleep(0.2)
