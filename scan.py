@@ -36,7 +36,7 @@ def scanArea(threshold = 400):
         if cv2.countNonZero(mask) > threshold:
             print(cv2.countNonZero(mask))
             return True
-        if myCount > 6:
+        if myCount > 12:
             return False
         rawCapture.truncate(0)
             
