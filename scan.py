@@ -17,16 +17,19 @@ def scanArea(threshold = 400):
         if myCount%4 == 0:
             print('f')
             forwards()
+            time.sleep(1)
         if myCount%4 == 1:
             print('r')
             right()
+            time.sleep(2)
         if myCount%4 == 2:
-            print('b')
+            print('f')
+            time.sleep(1)
             backwards()
         if myCount%4 == 3:
             print('l')
             left()
-        time.sleep(2)
+            time.sleep(2)
         myCount = myCount + 1
         image = frame.array
         hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
