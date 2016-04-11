@@ -1,11 +1,5 @@
-import smbus
 import time
-import microstacknode.hardware.gps.l80gps
-bus = smbus.SMBus(1)
-address = 0x04
-def writeNumber(value):
-    bus.write_byte(address, value)
-    return -1
+from commandP import *
 
 def all():
     bus.write_block_data(address, 2, [0, 1, 107])
@@ -54,14 +48,14 @@ def cool():
     time.sleep(3)
     zero()
     lift()
-    forward()
+    forwards()
     time.sleep(2)
-    backward()
+    backwards()
     time.sleep(1.5)
     for i in range (1,3):
       right()
       time.sleep(0.5*i)
-      bacward()
+      backwards()
       time.sleep(0.5*i)
       if i==2:
         down()
@@ -70,7 +64,7 @@ def cool():
       sleep(0.5)
       left()
       time.sleep(0.5*i)
-      forward()
+      forwards()
       time.sleep(0.5*i)
       
       
